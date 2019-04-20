@@ -43,8 +43,10 @@ namespace WinFormsApp1
             }
             //            dataGridView2.DataSource = payRollDataSet.Tables["EmpEJI"].DefaultView;
             bindingSource2.DataSource = payRollDataSet.Tables["EmpEJI"].DefaultView;
-            dataGridView2.DataSource = bindingSource2.DataSource;
+            //dataGridView2.DataSource = bindingSource2.DataSource;
             dataGridView2.AutoGenerateColumns = true;
+
+            //((DataView)bindingSource2.DataSource).Sort
         }
     }
 }
