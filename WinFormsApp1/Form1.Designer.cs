@@ -39,15 +39,16 @@
             this.cityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.zipDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingSourceEmployees = new System.Windows.Forms.BindingSource(this.components);
             this.payRollDataSet = new WinFormsApp1.PayRollDataSet();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.employeesTableAdapter = new WinFormsApp1.PayRollDataSetTableAdapters.EmployeesTableAdapter();
             this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.payRollDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
@@ -67,7 +68,7 @@
             this.cityDataGridViewTextBoxColumn,
             this.stateDataGridViewTextBoxColumn,
             this.zipDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.bindingSource1;
+            this.dataGridView1.DataSource = this.bindingSourceEmployees;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(240, 150);
@@ -128,10 +129,10 @@
             this.zipDataGridViewTextBoxColumn.HeaderText = "zip";
             this.zipDataGridViewTextBoxColumn.Name = "zipDataGridViewTextBoxColumn";
             // 
-            // bindingSource1
+            // bindingSourceEmployees
             // 
-            this.bindingSource1.DataMember = "Employees";
-            this.bindingSource1.DataSource = this.payRollDataSet;
+            this.bindingSourceEmployees.DataMember = "Employees";
+            this.bindingSourceEmployees.DataSource = this.payRollDataSet;
             // 
             // payRollDataSet
             // 
@@ -172,11 +173,23 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
+            // button3
+            // 
+            this.button3.AccessibleName = "";
+            this.button3.Location = new System.Drawing.Point(363, 223);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "USP";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView2);
@@ -185,7 +198,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceEmployees)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.payRollDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
@@ -196,7 +209,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.BindingSource bindingSourceEmployees;
         private PayRollDataSet payRollDataSet;
         private PayRollDataSetTableAdapters.EmployeesTableAdapter employeesTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
@@ -212,6 +225,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.BindingSource bindingSource2;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
 

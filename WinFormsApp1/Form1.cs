@@ -25,7 +25,7 @@ namespace WinFormsApp1
             dvEmp = payRollDataSet.Employees.DefaultView;
             dvEmp.RowFilter = "FirstName like 'm%'";
             dvEmp.Sort = "FirstName, LastName";
-            bindingSource1.DataSource = dvEmp;
+            bindingSourceEmployees.DataSource = dvEmp;
             //            dataGridView1.DataSource = dvEmp;
 
             // TODO: This line of code loads data into the 'payRollDataSet.Employees' table. You can move, or remove it, as needed.
@@ -57,6 +57,48 @@ namespace WinFormsApp1
             if (payRollDataSet.HasChanges())
             {
                 var n = employeesTableAdapter.Update(payRollDataSet);
+            }
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            SqlCommand GetCmd()
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = employeesTableAdapter.Connection;
+                cmd.CommandText = "USP_EmpByFirstName";
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlParameter p = new SqlParameter()
+                {
+                    ParameterName = "firstName",
+                    Value = "m"
+                };
+                cmd.Parameters.Add(p);
+                return cmd;
+            }
+
+            using (SqlDataAdapter da = new SqlDataAdapter()) //employeesTableAdapter.Connection))
+            {
+                da.SelectCommand = GetCmd();
+                DataTable dt= new DataTable();
+                da.Fill(dt);
+            };
+
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.Connection = employeesTableAdapter.Connection;
+                cmd.CommandText = "USP_EmpByFirstName";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter()
+                {
+                    ParameterName = "firstName",
+                    Value = "m"
+                });
+
+                DataTable tbl = new DataTable();
+                employeesTableAdapter.Connection.Open();
+                tbl.Load(cmd.ExecuteReader());
+                employeesTableAdapter.Connection.Close();
             }
         }
     }
