@@ -48,6 +48,17 @@ namespace WinFormsApp1
 
             //((DataView)bindingSource2.DataSource).Sort
         }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            //            payRollDataSet.Tables["employees"].Rows[1][1] = "test";
+            //            var n = employeesTableAdapter.Update(payRollDataSet);
+
+            if (payRollDataSet.HasChanges())
+            {
+                var n = employeesTableAdapter.Update(payRollDataSet);
+            }
+        }
     }
 }
 
