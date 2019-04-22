@@ -69,21 +69,21 @@ namespace WinFormsApp1
                 cmd.CommandText = "USP_EmpByFirstName";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@firstName", "m");
-/* OK
-                SqlParameter p = new SqlParameter()
-                {
-                    ParameterName = "firstName",
-                    Value = "m"
-                };
-                cmd.Parameters.Add(p);
-*/
+                /* OK
+                                SqlParameter p = new SqlParameter()
+                                {
+                                    ParameterName = "firstName",
+                                    Value = "m"
+                                };
+                                cmd.Parameters.Add(p);
+                */
                 return cmd;
             }
 
             using (SqlDataAdapter da = new SqlDataAdapter()) //employeesTableAdapter.Connection))
             {
                 da.SelectCommand = GetCmd();
-                DataTable dt= new DataTable();
+                DataTable dt = new DataTable();
                 da.Fill(dt);
             };
 
@@ -113,16 +113,14 @@ namespace WinFormsApp1
             conn.Close();
 
             var setting = Properties.Settings.Default.Properties["tst"];
-            //Properties.Settings.Default.tst = "new value"; //this writes to user, why? because app sttg is r/o?
-            //setting = Properties.Settings.Default.Properties["tst"];
-            //Properties.Settings.Default.Save();
+            //Properties.Settings.Default.tst = "new value"; //this writes to user, why? it is usr sttg w/default value for all usrs. because app sttg is r/o?
+            //a user.config file, which is created at run time when the user who runs the application changes the value of any user setting; and Save is called
 
+            var p2 = Properties.Settings.Default.tst;
             var p = WinFormsApp1.Properties.Settings.Default.tst;
-            WinFormsApp1.Properties.Settings.Default.tst = "new value 2";
+
+            Properties.Settings.Default.tst = "new value 2a";
             WinFormsApp1.Properties.Settings.Default.Save();
-
-
-            //            Properties.Settings.Default.Properties.Add(new System.Configuration.SettingsProperty("tst", typeof(string), ))
         }
     }
 }
