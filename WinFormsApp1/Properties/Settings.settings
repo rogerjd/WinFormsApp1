@@ -10,5 +10,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PayRoll.mdf;Integrated Security=True;Connect Timeout=30</Value>
     </Setting>
+    <Setting Name="tst" Type="System.String" Scope="User">
+      <Value Profile="(Default)">abc</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

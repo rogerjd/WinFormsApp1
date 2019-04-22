@@ -1,0 +1,5 @@
+﻿connection string, retrieve
+
+add new ctrls to form, with data source
+
+alter db, tbl, usp

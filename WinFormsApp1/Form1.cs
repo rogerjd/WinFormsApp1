@@ -68,12 +68,15 @@ namespace WinFormsApp1
                 cmd.Connection = employeesTableAdapter.Connection;
                 cmd.CommandText = "USP_EmpByFirstName";
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@firstName", "m");
+/* OK
                 SqlParameter p = new SqlParameter()
                 {
                     ParameterName = "firstName",
                     Value = "m"
                 };
                 cmd.Parameters.Add(p);
+*/
                 return cmd;
             }
 
@@ -91,7 +94,7 @@ namespace WinFormsApp1
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new SqlParameter()
                 {
-                    ParameterName = "firstName",
+                    ParameterName = "@firstName",
                     Value = "m"
                 });
 
@@ -100,6 +103,23 @@ namespace WinFormsApp1
                 tbl.Load(cmd.ExecuteReader());
                 employeesTableAdapter.Connection.Close();
             }
+        }
+
+        private void Button4_Click(object sender, EventArgs e)
+        {
+            var connStr = Properties.Settings.Default.PayRollConnectionString;
+
+            var setting = Properties.Settings.Default.Properties["tst"];
+            Properties.Settings.Default.tst = "new value";
+            setting = Properties.Settings.Default.Properties["tst"];
+            Properties.Settings.Default.Save();
+
+            var p = WinFormsApp1.Properties.Settings.Default.tst;
+            WinFormsApp1.Properties.Settings.Default.tst = "new value 2";
+            WinFormsApp1.Properties.Settings.Default.Save();
+
+
+            //            Properties.Settings.Default.Properties.Add(new System.Configuration.SettingsProperty("tst", typeof(string), ))
         }
     }
 }

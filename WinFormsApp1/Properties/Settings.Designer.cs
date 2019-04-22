@@ -33,5 +33,17 @@ namespace WinFormsApp1.Properties {
                 return ((string)(this["PayRollConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("abc")]
+        public string tst {
+            get {
+                return ((string)(this["tst"]));
+            }
+            set {
+                this["tst"] = value;
+            }
+        }
     }
 }
