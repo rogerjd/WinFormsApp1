@@ -108,11 +108,14 @@ namespace WinFormsApp1
         private void Button4_Click(object sender, EventArgs e)
         {
             var connStr = Properties.Settings.Default.PayRollConnectionString;
+            SqlConnection conn = new SqlConnection(connStr);
+            conn.Open();
+            conn.Close();
 
             var setting = Properties.Settings.Default.Properties["tst"];
-            Properties.Settings.Default.tst = "new value";
-            setting = Properties.Settings.Default.Properties["tst"];
-            Properties.Settings.Default.Save();
+            //Properties.Settings.Default.tst = "new value"; //this writes to user, why? because app sttg is r/o?
+            //setting = Properties.Settings.Default.Properties["tst"];
+            //Properties.Settings.Default.Save();
 
             var p = WinFormsApp1.Properties.Settings.Default.tst;
             WinFormsApp1.Properties.Settings.Default.tst = "new value 2";
