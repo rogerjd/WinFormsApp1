@@ -87,23 +87,7 @@ namespace WinFormsApp1
                 da.Fill(dt);
             };
 
-            using (SqlCommand cmd = new SqlCommand())
-            {
-                cmd.Connection = employeesTableAdapter.Connection;
-                cmd.CommandText = "USP_EmpByFirstName";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add(new SqlParameter()
-                {
-                    ParameterName = "@firstName",
-                    Value = "m"
-                });
-
-                DataTable tbl = new DataTable();
-                employeesTableAdapter.Connection.Open();
-                tbl.Load(cmd.ExecuteReader());
-                employeesTableAdapter.Connection.Close();
-            }
-        }
+         }
 
         private void Button4_Click(object sender, EventArgs e)
         {
@@ -131,6 +115,7 @@ namespace WinFormsApp1
             }
         }
 
+/*
         private void DataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex == -1)
@@ -166,11 +151,30 @@ namespace WinFormsApp1
 
             }
         }
-
+*/
         #region grid sort
         int curCol;
         ListSortDirection curDir = ListSortDirection.Ascending;
         #endregion
+
+        private void Button5_Click(object sender, EventArgs e)
+        {
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.Connection = employeesTableAdapter.Connection;
+                cmd.CommandText = "select * from employees where firstname like @p1";
+                cmd.Parameters.Add(new SqlParameter()
+                {
+                    ParameterName = "@p1",
+                    Value = textBox3.Text + "%"
+                });
+
+                DataTable tbl = new DataTable();
+                employeesTableAdapter.Connection.Open();
+                tbl.Load(cmd.ExecuteReader());
+                employeesTableAdapter.Connection.Close();
+            }
+        }
     }
 }
 
