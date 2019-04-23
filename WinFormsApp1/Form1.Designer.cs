@@ -53,11 +53,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButtonFN = new System.Windows.Forms.RadioButton();
+            this.radioButtonLN = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.payRollDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -238,15 +242,50 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 23);
             this.button5.TabIndex = 10;
-            this.button5.Text = "button5";
+            this.button5.Text = "Param";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.Button5_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.radioButtonLN);
+            this.groupBox1.Controls.Add(this.radioButtonFN);
+            this.groupBox1.Location = new System.Drawing.Point(152, 271);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 51);
+            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Order By";
+            // 
+            // radioButtonFN
+            // 
+            this.radioButtonFN.AutoSize = true;
+            this.radioButtonFN.Checked = true;
+            this.radioButtonFN.Location = new System.Drawing.Point(6, 19);
+            this.radioButtonFN.Name = "radioButtonFN";
+            this.radioButtonFN.Size = new System.Drawing.Size(75, 17);
+            this.radioButtonFN.TabIndex = 0;
+            this.radioButtonFN.TabStop = true;
+            this.radioButtonFN.Text = "First Name";
+            this.radioButtonFN.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonLN
+            // 
+            this.radioButtonLN.AutoSize = true;
+            this.radioButtonLN.Location = new System.Drawing.Point(95, 19);
+            this.radioButtonLN.Name = "radioButtonLN";
+            this.radioButtonLN.Size = new System.Drawing.Size(76, 17);
+            this.radioButtonLN.TabIndex = 1;
+            this.radioButtonLN.TabStop = true;
+            this.radioButtonLN.Text = "Last Name";
+            this.radioButtonLN.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label1);
@@ -266,6 +305,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.payRollDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -297,6 +338,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton radioButtonLN;
+        private System.Windows.Forms.RadioButton radioButtonFN;
     }
 }
 

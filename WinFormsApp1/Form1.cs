@@ -87,7 +87,7 @@ namespace WinFormsApp1
                 da.Fill(dt);
             };
 
-         }
+        }
 
         private void Button4_Click(object sender, EventArgs e)
         {
@@ -115,59 +115,86 @@ namespace WinFormsApp1
             }
         }
 
-/*
-        private void DataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.RowIndex == -1)
-            {
-                if (dataGridView1.Columns[e.ColumnIndex].SortMode == DataGridViewColumnSortMode.NotSortable)
+        /*
+                private void DataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
                 {
-                    return;
-                }
-
-                if (e.ColumnIndex == curCol)
-                {
-                    if (curDir == ListSortDirection.Ascending)
+                    if (e.RowIndex == -1)
                     {
-                        curDir = ListSortDirection.Descending;
-                    }
-                    else
-                    {
-                        curDir = ListSortDirection.Ascending;
+                        if (dataGridView1.Columns[e.ColumnIndex].SortMode == DataGridViewColumnSortMode.NotSortable)
+                        {
+                            return;
+                        }
+
+                        if (e.ColumnIndex == curCol)
+                        {
+                            if (curDir == ListSortDirection.Ascending)
+                            {
+                                curDir = ListSortDirection.Descending;
+                            }
+                            else
+                            {
+                                curDir = ListSortDirection.Ascending;
+                            }
+                        }
+
+                        curCol = e.ColumnIndex;
+
+                        switch (curDir)
+                        {
+                            case ListSortDirection.Ascending:
+                                dataGridView1.Sort(dataGridView1.Columns[e.ColumnIndex], ListSortDirection.Ascending);
+                                break;
+                            case ListSortDirection.Descending:
+                                dataGridView1.Sort(dataGridView1.Columns[e.ColumnIndex], ListSortDirection.Descending);
+                                break;
+                        }
+
                     }
                 }
-
-                curCol = e.ColumnIndex;
-
-                switch (curDir)
-                {
-                    case ListSortDirection.Ascending:
-                        dataGridView1.Sort(dataGridView1.Columns[e.ColumnIndex], ListSortDirection.Ascending);
-                        break;
-                    case ListSortDirection.Descending:
-                        dataGridView1.Sort(dataGridView1.Columns[e.ColumnIndex], ListSortDirection.Descending);
-                        break;
-                }
-
-            }
-        }
-*/
+        */
         #region grid sort
+/*
         int curCol;
         ListSortDirection curDir = ListSortDirection.Ascending;
+*/
         #endregion
 
         private void Button5_Click(object sender, EventArgs e)
         {
+
+            void SetupCmd(SqlCommand cmd)
+            {
+                List<string> res = new List<string>();
+                res.Add("select * from employees");
+
+                if (!string.IsNullOrWhiteSpace(textBox3.Text))
+                {
+                    res.Add("where FirstName like @p1");
+                    cmd.Parameters.AddWithValue("@p1", textBox3.Text + "%");
+                }
+
+                if (radioButtonFN.Checked)
+                    res.Add("order by FirstName");
+                else
+                    res.Add("order by LastName");
+
+                cmd.CommandText = string.Join(" ", res);
+            }
+
             using (SqlCommand cmd = new SqlCommand())
             {
                 cmd.Connection = employeesTableAdapter.Connection;
-                cmd.CommandText = "select * from employees where firstname like @p1";
+                //                cmd.CommandText = MakeQueryString();   // "select * from employees where firstname like @p1";
+                //                cmd.CommandText = "select * from employees where firstname like '" + @p1 +"%'";
+
+                SetupCmd(cmd);
+/*
                 cmd.Parameters.Add(new SqlParameter()
                 {
                     ParameterName = "@p1",
                     Value = textBox3.Text + "%"
                 });
+*/
 
                 DataTable tbl = new DataTable();
                 employeesTableAdapter.Connection.Open();
