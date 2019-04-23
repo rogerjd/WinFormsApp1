@@ -24,7 +24,7 @@ namespace WinFormsApp1
             //tbl with join > dgv  master-detail
             dvEmp = payRollDataSet.Employees.DefaultView;
             dvEmp.RowFilter = "FirstName like 'm%'";
-            dvEmp.Sort = "FirstName, LastName";
+            //dvEmp.Sort = "FirstName, LastName"; sort
             bindingSourceEmployees.DataSource = dvEmp;
             //            dataGridView1.DataSource = dvEmp;
 
@@ -122,8 +122,58 @@ namespace WinFormsApp1
             Properties.Settings.Default.tst = "new value 2a";
             WinFormsApp1.Properties.Settings.Default.Save();
         }
+
+        private void TextBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                ((DataView)bindingSourceEmployees.DataSource).RowFilter = "FirstName like '" + textBox2.Text + "%'";
+            }
+        }
+
+        private void DataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex == -1)
+            {
+                if (dataGridView1.Columns[e.ColumnIndex].SortMode == DataGridViewColumnSortMode.NotSortable)
+                {
+                    return;
+                }
+
+                if (e.ColumnIndex == curCol)
+                {
+                    if (curDir == ListSortDirection.Ascending)
+                    {
+                        curDir = ListSortDirection.Descending;
+                    }
+                    else
+                    {
+                        curDir = ListSortDirection.Ascending;
+                    }
+                }
+
+                curCol = e.ColumnIndex;
+
+                switch (curDir)
+                {
+                    case ListSortDirection.Ascending:
+                        dataGridView1.Sort(dataGridView1.Columns[e.ColumnIndex], ListSortDirection.Ascending);
+                        break;
+                    case ListSortDirection.Descending:
+                        dataGridView1.Sort(dataGridView1.Columns[e.ColumnIndex], ListSortDirection.Descending);
+                        break;
+                }
+
+            }
+        }
+
+        #region grid sort
+        int curCol;
+        ListSortDirection curDir = ListSortDirection.Ascending;
+        #endregion
     }
 }
+
 
 
 /*
