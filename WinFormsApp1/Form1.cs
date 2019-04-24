@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WinFormsApp1
@@ -29,9 +24,8 @@ namespace WinFormsApp1
             //            dataGridView1.DataSource = dvEmp;
 
             // TODO: This line of code loads data into the 'payRollDataSet.Employees' table. You can move, or remove it, as needed.
-            this.employeesTableAdapter.Fill(this.payRollDataSet.Employees);
-
-            var b = payRollDataSet.HasChanges();
+            employeesTableAdapter.Fill(payRollDataSet.Employees);
+            var b_ = payRollDataSet.HasChanges();
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -64,11 +58,14 @@ namespace WinFormsApp1
         {
             SqlCommand GetCmd()
             {
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = employeesTableAdapter.Connection;
-                cmd.CommandText = "USP_EmpByFirstName";
-                cmd.CommandType = CommandType.StoredProcedure;
+                SqlCommand cmd = new SqlCommand
+                {
+                    Connection = employeesTableAdapter.Connection,
+                    CommandText = "USP_EmpByFirstName",
+                    CommandType = CommandType.StoredProcedure
+                };
                 cmd.Parameters.AddWithValue("@firstName", "m");
+
                 /* OK
                                 SqlParameter p = new SqlParameter()
                                 {
@@ -101,10 +98,10 @@ namespace WinFormsApp1
             //a user.config file, which is created at run time when the user who runs the application changes the value of any user setting; and Save is called
 
             var p2 = Properties.Settings.Default.tst;
-            var p = WinFormsApp1.Properties.Settings.Default.tst;
+            var p = Properties.Settings.Default.tst;
 
             Properties.Settings.Default.tst = "new value 2a";
-            WinFormsApp1.Properties.Settings.Default.Save();
+            Properties.Settings.Default.Save();
         }
 
         private void TextBox2_KeyPress(object sender, KeyPressEventArgs e)
@@ -153,10 +150,10 @@ namespace WinFormsApp1
                 }
         */
         #region grid sort
-/*
-        int curCol;
-        ListSortDirection curDir = ListSortDirection.Ascending;
-*/
+        /*
+                int curCol;
+                ListSortDirection curDir = ListSortDirection.Ascending;
+        */
         #endregion
 
         private void Button5_Click(object sender, EventArgs e)
@@ -164,8 +161,10 @@ namespace WinFormsApp1
 
             void SetupCmd(SqlCommand cmd)
             {
-                List<string> res = new List<string>();
-                res.Add("select * from employees");
+                List<string> res = new List<string>
+                {
+                    "select * from employees"
+                };
 
                 if (!string.IsNullOrWhiteSpace(textBox3.Text))
                 {
@@ -188,13 +187,13 @@ namespace WinFormsApp1
                 //                cmd.CommandText = "select * from employees where firstname like '" + @p1 +"%'";
 
                 SetupCmd(cmd);
-/*
-                cmd.Parameters.Add(new SqlParameter()
-                {
-                    ParameterName = "@p1",
-                    Value = textBox3.Text + "%"
-                });
-*/
+                /*
+                                cmd.Parameters.Add(new SqlParameter()
+                                {
+                                    ParameterName = "@p1",
+                                    Value = textBox3.Text + "%"
+                                });
+                */
 
                 DataTable tbl = new DataTable();
                 employeesTableAdapter.Connection.Open();
