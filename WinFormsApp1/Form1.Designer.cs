@@ -54,8 +54,9 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButtonFN = new System.Windows.Forms.RadioButton();
             this.radioButtonLN = new System.Windows.Forms.RadioButton();
+            this.radioButtonFN = new System.Windows.Forms.RadioButton();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.payRollDataSet)).BeginInit();
@@ -186,7 +187,7 @@
             // button3
             // 
             this.button3.AccessibleName = "";
-            this.button3.Location = new System.Drawing.Point(363, 223);
+            this.button3.Location = new System.Drawing.Point(350, 241);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 4;
@@ -238,7 +239,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(152, 242);
+            this.button5.Location = new System.Drawing.Point(152, 273);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 23);
             this.button5.TabIndex = 10;
@@ -250,12 +251,24 @@
             // 
             this.groupBox1.Controls.Add(this.radioButtonLN);
             this.groupBox1.Controls.Add(this.radioButtonFN);
-            this.groupBox1.Location = new System.Drawing.Point(152, 271);
+            this.groupBox1.Location = new System.Drawing.Point(152, 302);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 51);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Order By";
+            this.groupBox1.Enter += new System.EventHandler(this.GroupBox1_Enter);
+            // 
+            // radioButtonLN
+            // 
+            this.radioButtonLN.AutoSize = true;
+            this.radioButtonLN.Location = new System.Drawing.Point(95, 19);
+            this.radioButtonLN.Name = "radioButtonLN";
+            this.radioButtonLN.Size = new System.Drawing.Size(76, 17);
+            this.radioButtonLN.TabIndex = 1;
+            this.radioButtonLN.TabStop = true;
+            this.radioButtonLN.Text = "Last Name";
+            this.radioButtonLN.UseVisualStyleBackColor = true;
             // 
             // radioButtonFN
             // 
@@ -269,22 +282,19 @@
             this.radioButtonFN.Text = "First Name";
             this.radioButtonFN.UseVisualStyleBackColor = true;
             // 
-            // radioButtonLN
+            // textBox4
             // 
-            this.radioButtonLN.AutoSize = true;
-            this.radioButtonLN.Location = new System.Drawing.Point(95, 19);
-            this.radioButtonLN.Name = "radioButtonLN";
-            this.radioButtonLN.Size = new System.Drawing.Size(76, 17);
-            this.radioButtonLN.TabIndex = 1;
-            this.radioButtonLN.TabStop = true;
-            this.radioButtonLN.Text = "Last Name";
-            this.radioButtonLN.UseVisualStyleBackColor = true;
+            this.textBox4.Location = new System.Drawing.Point(152, 244);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(100, 20);
+            this.textBox4.TabIndex = 12;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.textBox3);
@@ -341,6 +351,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioButtonLN;
         private System.Windows.Forms.RadioButton radioButtonFN;
+        private System.Windows.Forms.TextBox textBox4;
     }
 }
 

@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -9,6 +9,8 @@ namespace WinFormsApp1
     public partial class Form1 : Form
     {
         DataView dvEmp;
+
+        (int num, string name) tst;
         public Form1()
         {
             InitializeComponent();
@@ -151,14 +153,14 @@ namespace WinFormsApp1
         */
         #region grid sort
         /*
-                int curCol;
-                ListSortDirection curDir = ListSortDirection.Ascending;
+         * 
+          (int curCol, ListSortDirection curDir) sortInfo;
         */
         #endregion
 
         private void Button5_Click(object sender, EventArgs e)
         {
-
+            /*
             void SetupCmd(SqlCommand cmd)
             {
                 List<string> res = new List<string>
@@ -169,7 +171,7 @@ namespace WinFormsApp1
                 if (!string.IsNullOrWhiteSpace(textBox3.Text))
                 {
                     res.Add("where FirstName like @p1");
-                    cmd.Parameters.AddWithValue("@p1", textBox3.Text + "%");
+                    cmd.Parameters.AddWithValue("@p1", textBox3.Text.Trim() + "%");
                 }
 
                 if (radioButtonFN.Checked)
@@ -179,6 +181,7 @@ namespace WinFormsApp1
 
                 cmd.CommandText = string.Join(" ", res);
             }
+            */
 
             using (SqlCommand cmd = new SqlCommand())
             {
@@ -186,7 +189,24 @@ namespace WinFormsApp1
                 //                cmd.CommandText = MakeQueryString();   // "select * from employees where firstname like @p1";
                 //                cmd.CommandText = "select * from employees where firstname like '" + @p1 +"%'";
 
-                SetupCmd(cmd);
+
+                //todo: just use: Trim()+%
+                //SetupCmd(cmd);
+                cmd.CommandText = "select * from employees ";
+                cmd.CommandText += "where FirstName like @p1 ";
+                cmd.Parameters.AddWithValue("@p1", textBox3.Text.Trim() + "%");
+
+                cmd.CommandText += " AND LastName like @p2 ";
+                cmd.Parameters.AddWithValue("@p2", textBox4.Text.Trim() + "%");
+
+                if (radioButtonFN.Checked)
+                    cmd.CommandText += " order by FirstName";
+                else
+                    cmd.CommandText += " order by LastName";
+
+                //cmd.CommandText = string.Join(" ", res);
+
+
                 /*
                                 cmd.Parameters.Add(new SqlParameter()
                                 {
@@ -195,11 +215,18 @@ namespace WinFormsApp1
                                 });
                 */
 
+                //cmd.CommandText = "select * from employees where FirstName like 'a%'";
+
                 DataTable tbl = new DataTable();
                 employeesTableAdapter.Connection.Open();
                 tbl.Load(cmd.ExecuteReader());
                 employeesTableAdapter.Connection.Close();
             }
+        }
+
+        private void GroupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
