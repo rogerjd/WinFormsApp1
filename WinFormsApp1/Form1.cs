@@ -160,38 +160,9 @@ namespace WinFormsApp1
 
         private void Button5_Click(object sender, EventArgs e)
         {
-            /*
-            void SetupCmd(SqlCommand cmd)
-            {
-                List<string> res = new List<string>
-                {
-                    "select * from employees"
-                };
-
-                if (!string.IsNullOrWhiteSpace(textBox3.Text))
-                {
-                    res.Add("where FirstName like @p1");
-                    cmd.Parameters.AddWithValue("@p1", textBox3.Text.Trim() + "%");
-                }
-
-                if (radioButtonFN.Checked)
-                    res.Add("order by FirstName");
-                else
-                    res.Add("order by LastName");
-
-                cmd.CommandText = string.Join(" ", res);
-            }
-            */
-
             using (SqlCommand cmd = new SqlCommand())
             {
                 cmd.Connection = employeesTableAdapter.Connection;
-                //                cmd.CommandText = MakeQueryString();   // "select * from employees where firstname like @p1";
-                //                cmd.CommandText = "select * from employees where firstname like '" + @p1 +"%'";
-
-
-                //todo: just use: Trim()+%
-                //SetupCmd(cmd);
                 cmd.CommandText = "select * from employees ";
                 cmd.CommandText += "where FirstName like @p1 ";
                 cmd.Parameters.AddWithValue("@p1", textBox3.Text.Trim() + "%");
@@ -203,19 +174,6 @@ namespace WinFormsApp1
                     cmd.CommandText += " order by FirstName";
                 else
                     cmd.CommandText += " order by LastName";
-
-                //cmd.CommandText = string.Join(" ", res);
-
-
-                /*
-                                cmd.Parameters.Add(new SqlParameter()
-                                {
-                                    ParameterName = "@p1",
-                                    Value = textBox3.Text + "%"
-                                });
-                */
-
-                //cmd.CommandText = "select * from employees where FirstName like 'a%'";
 
                 DataTable tbl = new DataTable();
                 employeesTableAdapter.Connection.Open();
