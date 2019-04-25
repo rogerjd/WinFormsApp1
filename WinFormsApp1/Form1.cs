@@ -181,11 +181,6 @@ namespace WinFormsApp1
                 employeesTableAdapter.Connection.Close();
             }
         }
-
-        private void GroupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
     }
 }
 
