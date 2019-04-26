@@ -28,6 +28,12 @@ namespace WinFormsApp1
             // TODO: This line of code loads data into the 'payRollDataSet.Employees' table. You can move, or remove it, as needed.
             employeesTableAdapter.Fill(payRollDataSet.Employees);
             var b_ = payRollDataSet.HasChanges();
+
+            textBox5.LostFocus += TextBox5_LostFocus;
+        }
+
+        private void TextBox5_LostFocus(object sender, EventArgs e)
+        {
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -164,10 +170,10 @@ namespace WinFormsApp1
             {
                 cmd.Connection = employeesTableAdapter.Connection;
                 cmd.CommandText = "select * from employees ";
-                cmd.CommandText += "where FirstName like @p1 ";
+                cmd.CommandText += "where FirstName like @p1";
                 cmd.Parameters.AddWithValue("@p1", textBox3.Text.Trim() + "%");
 
-                cmd.CommandText += " AND LastName like @p2 ";
+                cmd.CommandText += " AND LastName like @p2";
                 cmd.Parameters.AddWithValue("@p2", textBox4.Text.Trim() + "%");
 
                 if (radioButtonFN.Checked)
@@ -176,10 +182,38 @@ namespace WinFormsApp1
                     cmd.CommandText += " order by LastName";
 
                 DataTable tbl = new DataTable();
+                using (var da = new SqlDataAdapter(cmd))
+                {
+                    da.Fill(tbl);
+                }
+                
+                    /*
                 employeesTableAdapter.Connection.Open();
                 tbl.Load(cmd.ExecuteReader());
                 employeesTableAdapter.Connection.Close();
+                */
             }
+        }
+
+        private void TextBox5_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+        }
+
+        private void Button6_Click(object sender, EventArgs e)
+        {
+            //MessageBox.Show("validation");
+            Close();
+        }
+
+        private void TextBox5_Leave(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = false;
         }
     }
 }
