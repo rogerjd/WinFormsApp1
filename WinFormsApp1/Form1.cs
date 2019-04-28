@@ -54,7 +54,7 @@ namespace WinFormsApp1
         private void Button2_Click(object sender, EventArgs e)
         {
             //            payRollDataSet.Tables["employees"].Rows[1][1] = "test";
-            //            var n = employeesTableAdapter.Update(payRollDataSet);
+            //            var n = eamployeesTableAdapter.Update(payRollDataSet);
 
             if (payRollDataSet.HasChanges())
             {
@@ -91,7 +91,6 @@ namespace WinFormsApp1
                 DataTable dt = new DataTable();
                 da.Fill(dt);
             };
-
         }
 
         private void Button4_Click(object sender, EventArgs e)
@@ -108,7 +107,7 @@ namespace WinFormsApp1
             var p2 = Properties.Settings.Default.tst;
             var p = Properties.Settings.Default.tst;
 
-            Properties.Settings.Default.tst = "new value 2a";
+            Properties.Settings.Default.tst = "new value 2aa";
             Properties.Settings.Default.Save();
         }
 
@@ -214,6 +213,12 @@ namespace WinFormsApp1
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = false;
+        }
+
+        private void Button7_Click(object sender, EventArgs e)
+        {
+            var vf = new ValidateForm();
+            var dr = vf.ShowDialog();
         }
     }
 }
