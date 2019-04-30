@@ -9,7 +9,7 @@ namespace WinFormsApp1
     public partial class Form1 : Form
     {
         DataView dvEmp;
-
+        
         (int num, string name) tst;
         public Form1()
         {
