@@ -220,6 +220,15 @@ namespace WinFormsApp1
             var vf = new ValidateForm();
             var dr = vf.ShowDialog();
         }
+
+        private void Button8_Click(object sender, EventArgs e)
+        {
+            IEnumerableTst t = new IEnumerableTst();
+            foreach (var n in t)
+            {
+                Console.WriteLine(n);
+            }
+        }
     }
 }
 
