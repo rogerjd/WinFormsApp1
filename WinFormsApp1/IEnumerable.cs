@@ -7,33 +7,35 @@ using System.Threading.Tasks;
 
 namespace WinFormsApp1
 {
-    class IEnumerableTst : IEnumerable<int>, IEnumerator<int>
+    class MyStrings: IEnumerable<string>
+    {
+
+        IEnumerator<string> IEnumerable<string>.GetEnumerator() => GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
+        public StrEnum GetEnumerator()
+        {
+            return new StrEnum();
+        }
+    }
+
+    class StrEnum : IEnumerator<string>
     {
         int indx = -1;
-        int[] lst = new int[] { 1, 2, 3 };
-        int IEnumerator<int>.Current => lst[indx];
+        string[] lst = new string[] { "1", "2", "3" };
+        string IEnumerator<string>.Current => lst[indx];
 
-        object IEnumerator.Current => ((IEnumerator<int>)this).Current;      //OK:  Tst();
-
-        object Tst()
-        {
-            return null;
-        }
-
-        public IEnumerator<int> GetEnumerator()
-        {
-            return this;
-        }
+       object IEnumerator.Current => ((IEnumerator<string>)this).Current;      //OK:  Tst();
 
         void IDisposable.Dispose()
         {
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
+        public StrEnum()
         {
-            return this.GetEnumerator();
+            //past list to enum
         }
-
+ 
         public bool MoveNext()  //implicit implementation
         {
             indx++;
