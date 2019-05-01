@@ -34,13 +34,13 @@ namespace WinFormsApp1
             return this.GetEnumerator();
         }
 
-        bool IEnumerator.MoveNext()
+        public bool MoveNext()  //implicit implementation
         {
             indx++;
             return (indx < lst.Length);
         }
 
-        void IEnumerator.Reset()
+        void IEnumerator.Reset()  //explicit (public is default)
         {
             indx = -1;
         }
