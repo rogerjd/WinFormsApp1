@@ -26,7 +26,7 @@ namespace WinFormsApp1
         int indx = -1;
         string[] _lst;
 
-        string IEnumerator<string>.Current => lst[indx];
+        string IEnumerator<string>.Current => _lst[indx];
 
         object IEnumerator.Current => ((IEnumerator<string>)this).Current;      //OK:  Tst();
 
@@ -42,7 +42,7 @@ namespace WinFormsApp1
         public bool MoveNext()  //implicit implementation
         {
             indx++;
-            return (indx < lst.Length);
+            return (indx < _lst.Length);
         }
 
         void IEnumerator.Reset()  //explicit (public is default)

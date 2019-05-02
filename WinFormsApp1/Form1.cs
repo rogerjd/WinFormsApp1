@@ -9,7 +9,7 @@ namespace WinFormsApp1
     public partial class Form1 : Form
     {
         DataView dvEmp;
-        
+
         (int num, string name) tst;
         public Form1()
         {
@@ -64,33 +64,41 @@ namespace WinFormsApp1
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            SqlCommand GetCmd()
+            Cursor.Current = Cursors.WaitCursor;
+            try
             {
-                SqlCommand cmd = new SqlCommand
+                SqlCommand GetCmd()
                 {
-                    Connection = employeesTableAdapter.Connection,
-                    CommandText = "USP_EmpByFirstName",
-                    CommandType = CommandType.StoredProcedure
+                    SqlCommand cmd = new SqlCommand
+                    {
+                        Connection = employeesTableAdapter.Connection,
+                        CommandText = "USP_EmpByFirstName",
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    cmd.Parameters.AddWithValue("@firstName", "m");
+
+                    /* OK
+                                    SqlParameter p = new SqlParameter()
+                                    {
+                                        ParameterName = "firstName",
+                                        Value = "m"
+                                    };
+                                    cmd.Parameters.Add(p);
+                    */
+                    return cmd;
+                }
+
+                using (SqlDataAdapter da = new SqlDataAdapter()) //employeesTableAdapter.Connection))
+                {
+                    da.SelectCommand = GetCmd();
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
                 };
-                cmd.Parameters.AddWithValue("@firstName", "m");
-
-                /* OK
-                                SqlParameter p = new SqlParameter()
-                                {
-                                    ParameterName = "firstName",
-                                    Value = "m"
-                                };
-                                cmd.Parameters.Add(p);
-                */
-                return cmd;
             }
-
-            using (SqlDataAdapter da = new SqlDataAdapter()) //employeesTableAdapter.Connection))
+            finally
             {
-                da.SelectCommand = GetCmd();
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-            };
+                Cursor.Current = Cursors.Default;
+            }
         }
 
         private void Button4_Click(object sender, EventArgs e)
@@ -185,12 +193,12 @@ namespace WinFormsApp1
                 {
                     da.Fill(tbl);
                 }
-                
-                    /*
-                employeesTableAdapter.Connection.Open();
-                tbl.Load(cmd.ExecuteReader());
-                employeesTableAdapter.Connection.Close();
-                */
+
+                /*
+            employeesTableAdapter.Connection.Open();
+            tbl.Load(cmd.ExecuteReader());
+            employeesTableAdapter.Connection.Close();
+            */
             }
         }
 
@@ -207,7 +215,7 @@ namespace WinFormsApp1
 
         private void TextBox5_Leave(object sender, EventArgs e)
         {
-            
+
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
