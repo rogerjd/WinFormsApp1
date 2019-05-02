@@ -9,9 +9,10 @@ namespace WinFormsApp1
 {
     class MyStrs : IEnumerable<string>
     {
+        string[] lst = new string[] { "1", "2", "3" };
 
         //        IEnumerator<string> IEnumerable<string>.GetEnumerator() => new StrEnum();
-        public IEnumerator<string> GetEnumerator() => new StrEnum();
+        public IEnumerator<string> GetEnumerator() => new StrEnum(lst);
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         //public StrEnum GetEnumerator()
@@ -23,7 +24,7 @@ namespace WinFormsApp1
     class StrEnum : IEnumerator<string>
     {
         int indx = -1;
-        string[] lst = new string[] { "1", "2", "3" };
+        string[] _lst;
 
         string IEnumerator<string>.Current => lst[indx];
 
@@ -33,9 +34,9 @@ namespace WinFormsApp1
         {
         }
 
-        public StrEnum()
+        public StrEnum(string[] lst)
         {
-            //pass list to enum
+            _lst = lst;
         }
 
         public bool MoveNext()  //implicit implementation
