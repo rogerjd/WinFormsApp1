@@ -223,13 +223,13 @@ namespace WinFormsApp1
 
         private void Button8_Click(object sender, EventArgs e)
         {
-            StrEnum t = new StrEnum();
+            MyStrs t = new MyStrs();
             foreach (var n in t)
             {
                 Console.WriteLine(n);
             }
 
-            t.Reset();
+            //t.Reset();
 
             //wont run again, without a reset
             foreach (var n in t)

@@ -7,25 +7,27 @@ using System.Threading.Tasks;
 
 namespace WinFormsApp1
 {
-    class MyStrings: IEnumerable<string>
+    class MyStrs : IEnumerable<string>
     {
 
-        IEnumerator<string> IEnumerable<string>.GetEnumerator() => GetEnumerator();
+        //        IEnumerator<string> IEnumerable<string>.GetEnumerator() => new StrEnum();
+        public IEnumerator<string> GetEnumerator() => new StrEnum();
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-        public StrEnum GetEnumerator()
-        {
-            return new StrEnum();
-        }
+        //public StrEnum GetEnumerator()
+        //{
+        //    return new StrEnum();
+        //}
     }
 
     class StrEnum : IEnumerator<string>
     {
         int indx = -1;
         string[] lst = new string[] { "1", "2", "3" };
+
         string IEnumerator<string>.Current => lst[indx];
 
-       object IEnumerator.Current => ((IEnumerator<string>)this).Current;      //OK:  Tst();
+        object IEnumerator.Current => ((IEnumerator<string>)this).Current;      //OK:  Tst();
 
         void IDisposable.Dispose()
         {
@@ -33,9 +35,9 @@ namespace WinFormsApp1
 
         public StrEnum()
         {
-            //past list to enum
+            //pass list to enum
         }
- 
+
         public bool MoveNext()  //implicit implementation
         {
             indx++;
@@ -44,7 +46,7 @@ namespace WinFormsApp1
 
         void IEnumerator.Reset()  //explicit (public is default)
         {
-            indx = -1;
+            indx = -1;  //not really used. just create new Enumerator
         }
     }
 }
