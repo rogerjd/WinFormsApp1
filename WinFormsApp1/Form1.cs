@@ -8,12 +8,14 @@ namespace WinFormsApp1
 {
     public partial class Form1 : Form
     {
-        DataView dvEmp;
 
-        (int num, string name) tst;
+        DataView dvEmp;
+        private (int num, string name) tst;
         public Form1()
         {
             InitializeComponent();
+            tst = (1, "abc");
+            Console.WriteLine(tst);
         }
 
         private void Form1_Load(object sender, EventArgs e)
