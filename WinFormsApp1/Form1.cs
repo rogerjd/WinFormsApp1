@@ -247,6 +247,17 @@ namespace WinFormsApp1
                 Console.WriteLine(n);
             }
         }
+
+        private void Button9_Click(object sender, EventArgs e)
+        {
+            DirectoryInfo df = new DirectoryInfo();
+            df.ShowDialog();
+        }
+
+        private void Button10_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
 

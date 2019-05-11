@@ -61,6 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DirectoryInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectoryInfo.Designer.cs">
+      <DependentUpon>DirectoryInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,9 @@
     <Compile Include="ValidateForm.Designer.cs">
       <DependentUpon>ValidateForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DirectoryInfo.resx">
+      <DependentUpon>DirectoryInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
