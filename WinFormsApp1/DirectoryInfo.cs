@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace WinFormsApp1
@@ -18,6 +12,21 @@ namespace WinFormsApp1
 
             //            listView1.Items = new string[] {"one", "two", "three" };
             listView1.Items.Add(new ListViewItem( new string[] { "one", "two", "three" }));
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            DirSearch(@"c:\users\roger\my documents");
+        }
+
+        private void DirSearch(string v)
+        {
+            Console.WriteLine(v);
+
+            foreach (var dir in Directory.GetDirectories(v))
+            {
+                DirSearch(dir);
+            }
         }
     }
 }
