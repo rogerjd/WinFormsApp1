@@ -40,7 +40,7 @@ namespace WinFormsApp1
 
         private void BuildTreeView(TreeNode tn)
         {
-            Console.WriteLine(tn.Text);
+            Console.WriteLine(tn.Text); //there is Tag property
 
             try
             {
