@@ -46,6 +46,7 @@ namespace WinFormsApp1
             {
                 foreach (var dir in Directory.GetDirectories(tn.Text, "*", SearchOption.TopDirectoryOnly))
                 {
+                    Console.WriteLine(Path.GetFileName(dir));
                     TreeNode tn2 = new TreeNode(dir);
                     tn.Nodes.Add(tn2);
                     BuildTreeView(tn2);
