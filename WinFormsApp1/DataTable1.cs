@@ -36,6 +36,16 @@ namespace WinFormsApp1
             };
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
+
+            comboBox1.DataSource = dt;
+            comboBox1.DisplayMember = "Title";
+            comboBox1.ValueMember = "ID";
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(comboBox1.SelectedIndex.ToString() + " " + comboBox1.SelectedItem.ToString() + " " +
+                comboBox1.SelectedText + " " + comboBox1.SelectedValue.ToString());
         }
     }
 }
