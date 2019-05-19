@@ -45,5 +45,18 @@ namespace WinFormsApp1.Properties {
                 this["tst"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=RazorPagesMovieContext-f9dc36d" +
+            "5-29a3-47bc-bd8c-212a2e1cab34;Integrated Security=True;Connect Timeout=30;Encryp" +
+            "t=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFail" +
+            "over=False")]
+        public string MovieConnStr {
+            get {
+                return ((string)(this["MovieConnStr"]));
+            }
+        }
     }
 }

@@ -257,6 +257,12 @@ namespace WinFormsApp1
         {
             Close();
         }
+
+        private void Button10_Click_1(object sender, EventArgs e)
+        {
+            DataTable1 dt = new DataTable1();
+            dt.ShowDialog();
+        }
     }
 }
 
