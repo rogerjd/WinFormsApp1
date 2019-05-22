@@ -26,7 +26,7 @@ namespace WinFormsApp1
         private void Button1_Click(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
-            var connStr = Properties.Settings.Default.MovieConnStr;
+            var connStr = Properties.Settings.Default.MovieConnStr;  //use cfg mgr
             SqlConnection conn = new SqlConnection(connStr);
             SqlCommand cmd = new SqlCommand
             {
