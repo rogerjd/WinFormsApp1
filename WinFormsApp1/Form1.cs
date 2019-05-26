@@ -255,6 +255,7 @@ namespace WinFormsApp1
 
         private void Button10_Click(object sender, EventArgs e)
         {
+            textBox6.Validating -= TextBox6_Validating;   //fix for: Form.Show  not needed for ShowDiaglog
             Close();
         }
 
@@ -262,6 +263,33 @@ namespace WinFormsApp1
         {
             DataTable1 dt = new DataTable1();
             DialogResult dr =  dt.ShowDialog();
+        }
+
+        private void Button11_Click(object sender, EventArgs e)
+        {
+            validate();
+        }
+
+        private void validate()
+        {
+            MessageBox.Show("validate");
+        }
+
+        private void TextBox6_Leave(object sender, EventArgs e)
+        {
+            //textBox6.Leave -= TextBox6_Leave;
+            //validate();
+            //textBox1.Focus();
+        }
+
+        private void TextBox6_Enter(object sender, EventArgs e)
+        {
+            //textBox6.Leave += TextBox6_Leave;
+        }
+
+        private void TextBox6_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = string.IsNullOrEmpty(textBox6.Text.Trim());
         }
     }
 }

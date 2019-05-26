@@ -64,6 +64,8 @@
             this.button9 = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.payRollDataSet)).BeginInit();
@@ -299,6 +301,7 @@
             // 
             this.textBox5.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceEmployees, "FirstName", true));
             this.textBox5.Location = new System.Drawing.Point(576, 223);
+            this.textBox5.MaxLength = 9;
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 20);
             this.textBox5.TabIndex = 13;
@@ -348,12 +351,13 @@
             // 
             // btnClose
             // 
+            this.btnClose.CausesValidation = false;
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.Location = new System.Drawing.Point(12, 415);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 18;
-            this.btnClose.Text = "Close";
+            this.btnClose.Text = "&Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.Button10_Click);
             // 
@@ -367,12 +371,33 @@
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.Button10_Click_1);
             // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(414, 415);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(75, 23);
+            this.button11.TabIndex = 21;
+            this.button11.Text = "button11";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.Button11_Click);
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(308, 416);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(100, 20);
+            this.textBox6.TabIndex = 20;
+            this.textBox6.Enter += new System.EventHandler(this.TextBox6_Enter);
+            this.textBox6.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox6_Validating);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.button11);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.button9);
@@ -445,6 +470,8 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.TextBox textBox6;
     }
 }
 

@@ -57,5 +57,10 @@ namespace WinFormsApp1
         {
             errorProvider1.SetError(textBox2, "");
         }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

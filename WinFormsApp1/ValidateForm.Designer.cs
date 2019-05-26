@@ -39,6 +39,7 @@
             // 
             // button1
             // 
+            this.button1.CausesValidation = false;
             this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button1.Location = new System.Drawing.Point(12, 397);
             this.button1.Name = "button1";
@@ -46,6 +47,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Cancel";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // button2
             // 
@@ -84,7 +86,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.CancelButton = this.button1;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.textBox2);
