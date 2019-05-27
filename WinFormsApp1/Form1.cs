@@ -255,7 +255,8 @@ namespace WinFormsApp1
 
         private void Button10_Click(object sender, EventArgs e)
         {
-            textBox6.Validating -= TextBox6_Validating;   //fix for: Form.Show  not needed for ShowDiaglog, or use Form.Closing e.Cancel = false
+            if (!btnClose.CausesValidation)
+                textBox6.Validating -= TextBox6_Validating;   //fix for: Form.Show  not needed for ShowDiaglog, or use Form.Closing e.Cancel = false
             Close();
         }
 
