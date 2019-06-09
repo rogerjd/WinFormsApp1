@@ -11,6 +11,11 @@ where
 	rb.RawBC not in (select NDC from Inventory) and 
 	rb.NDC in (select NDC from Inventory) and 
 	(rb.RawBC in (select RawBC from RawBCs group by RawBC having count (distinct NDC) = 1))
+
+select RawBC
+from RawBCs rb
+where 
+	rb.RawBC in (select NDC from Inventory)
 ------------------------
 
 drop table #tmp
