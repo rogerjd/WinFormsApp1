@@ -73,6 +73,12 @@
     <Compile Include="DirectoryInfo.Designer.cs">
       <DependentUpon>DirectoryInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="EventsCtrl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EventsCtrl.Designer.cs">
+      <DependentUpon>EventsCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PayRollDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ProdVer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProdVer.Designer.cs">
+      <DependentUpon>ProdVer.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,8 +111,14 @@
     <EmbeddedResource Include="DirectoryInfo.resx">
       <DependentUpon>DirectoryInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EventsCtrl.resx">
+      <DependentUpon>EventsCtrl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProdVer.resx">
+      <DependentUpon>ProdVer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

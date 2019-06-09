@@ -9,7 +9,10 @@ namespace WinFormsApp1
     {
 
         DataView dvEmp;
-        private (int num, string name) tst;
+        private (int num, string name) tst; //tuple
+
+        event EventHandler tst2;
+
         public Form1()
         {
             InitializeComponent();
@@ -291,6 +294,31 @@ namespace WinFormsApp1
         private void TextBox6_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             e.Cancel = string.IsNullOrEmpty(textBox6.Text.Trim());
+        }
+
+        private void Button12_Click(object sender, EventArgs e)
+        {
+   
+            tst2?.Invoke(null, null);
+
+            //button6.Click?.Invoke();
+        }
+
+        private void BtnEvents_Click(object sender, EventArgs e)
+        {
+            EventsCtrl frm = new EventsCtrl();
+            frm.ShowDialog();
+        }
+
+        private void CloseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void ProdVerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProdVer frm = new ProdVer();
+            frm.ShowDialog();
         }
     }
 }
