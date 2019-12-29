@@ -9,6 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/*
+ *  DataView to sort and filter 
+*/
+
+
 namespace WinFormsApp1
 {
     public partial class DataTable1 : Form
@@ -40,12 +45,14 @@ namespace WinFormsApp1
             comboBox1.DataSource = dt;
             comboBox1.DisplayMember = "Title";
             comboBox1.ValueMember = "ID";
+
+            dataGridView1.DataSource = dt; // will create cols from dt
         }
 
         private void Button3_Click(object sender, EventArgs e)
         {
             MessageBox.Show(comboBox1.SelectedIndex.ToString() + " " + comboBox1.SelectedItem.ToString() + " " +
-                comboBox1.SelectedText + " " + comboBox1.SelectedValue.ToString());
+                comboBox1.SelectedText + " " + comboBox1.SelectedValue.ToString() + " " + comboBox1.Text);
         }
     }
 }
